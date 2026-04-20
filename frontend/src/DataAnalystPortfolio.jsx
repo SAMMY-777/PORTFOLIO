@@ -13,7 +13,7 @@ const SKILLS = [
   { name: "Excel", icon: "📋", level: 90, color: "#22C55E" },
   { name: "Statistics", icon: "📐", level: 82, color: "#8B5CF6" },
   { name: "Machine Learning", icon: "🤖", level: 78, color: "#EC4899" },
-  { name: "R", icon: "📉", level: 72, color: "#06B6D4" },
+  { name: "Cognos", icon: "📊", level: 72, color: "#06B6D4" },
 ];
 
 const TOOLS = [
@@ -23,10 +23,7 @@ const TOOLS = [
   { name: "Matplotlib", category: "Viz" },
   { name: "Seaborn", category: "Viz" },
   { name: "PostgreSQL", category: "SQL" },
-  { name: "BigQuery", category: "SQL" },
   { name: "dbt", category: "ETL" },
-  { name: "Airflow", category: "ETL" },
-  { name: "Snowflake", category: "Cloud" },
   { name: "AWS S3", category: "Cloud" },
   { name: "Git", category: "Dev" },
 ];
@@ -48,6 +45,20 @@ const EXPERIENCE = [
   },
 ];
 
+const EDUCATION = [
+  {
+    year: "2027",
+    college: "Greater Noida Institute of Technology",
+    details: "BTech in Computer Science Engineering  with major in Artificial Intelligence and Machine learning.",
+  },
+  {
+    year: "2024",
+    college: "M.M.I.T",
+    details: "Diploma in Computer Science and Engineering",
+  },
+
+];
+
 const PROJECTS = [
   {
     title: "E-Commerce Revenue Dashboard",
@@ -61,7 +72,6 @@ const PROJECTS = [
     title: "Customer Churn Prediction Model",
     desc: "ML pipeline using Random Forest & XGBoost on 500K+ records to predict churn 30 days in advance with 89% accuracy.",
     tools: ["Python", "Scikit-learn", "SQL"],
-    impact: "Saved $2.1M annually",
     type: "Machine Learning",
     color: "#8B5CF6",
   },
@@ -77,7 +87,6 @@ const PROJECTS = [
     title: "Supply Chain Optimization",
     desc: "Identified $800K inventory inefficiencies via SQL-based demand forecasting. Automated weekly reorder reports via Airflow.",
     tools: ["SQL", "Python", "Airflow", "Excel"],
-    impact: "$800K cost reduction",
     type: "Case Study",
     color: "#10B981",
   },
@@ -93,7 +102,6 @@ const PROJECTS = [
     title: "Sentiment Analysis – Product Reviews",
     desc: "NLP pipeline on 200K+ Amazon reviews using BERT embeddings. Results surfaced in an interactive Streamlit dashboard.",
     tools: ["Python", "NLP", "Streamlit", "SQL"],
-    impact: "Guided Q3 product roadmap",
     type: "Machine Learning",
     color: "#EC4899",
   },
@@ -180,9 +188,6 @@ function SkillBar({ skill, delay = 0 }) {
       <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 8 }}>
         <span style={{ color: "#e2e8f0", fontFamily: "'Space Grotesk', sans-serif", fontSize: 15, fontWeight: 500 }}>
           {skill.icon} {skill.name}
-        </span>
-        <span style={{ color: skill.color, fontWeight: 700, fontFamily: "monospace", fontSize: 14 }}>
-          {skill.level}%
         </span>
       </div>
       <div style={{ height: 6, background: "#1e293b", borderRadius: 99 }}>
@@ -680,7 +685,7 @@ const handleSubmit = async (e) => {
               </div>
               {/* Stats */}
               <div style={{ display: "flex", gap: 40, marginTop: 56 }}>
-                {[["2+", "Years Experience"], ["40+", "Projects Delivered"], ["$3M+", "Revenue Impacted"]].map(([val, label]) => (
+                {[["1", "Year Experience"], ["40+", "Projects Delivered"], ["20K+", "Revenue Impacted"]].map(([val, label]) => (
                   <div key={label}>
                     <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 30, fontWeight: 800, color: "#06B6D4" }}>{val}</div>
                     <div style={{ color: "#64748b", fontSize: 13 }}>{label}</div>
@@ -751,23 +756,50 @@ const handleSubmit = async (e) => {
                 style={{
                   width: "100%",
                   aspectRatio: "4/3",
-                  background: "linear-gradient(135deg, #06B6D411, #8B5CF611)",
+                  background: "linear-gradient(135deg, rgba(6,11,20,0.9), rgba(13,21,38,0.96))",
                   borderRadius: 20,
                   border: "1px solid #1e293b",
                   display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 90,
                   flexDirection: "column",
-                  gap: 16,
-                  padding: 32,
+                  padding: 28,
+                  gap: 20,
+                  boxShadow: "0 30px 80px rgba(6,182,212,0.1)",
+                  overflow: "hidden",
                 }}
               >
-                <div style={{ fontSize: 70 }}>🔍</div>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 13, color: "#94a3b8", textAlign: "center", lineHeight: 2 }}>
-                  {`data.describe()`}<br />
-                  {`→ insights.shape`}<br />
-                  {`→ decisions.value`}
+                <div style={{ display: "flex", alignItems: "center", gap: 14, flexShrink: 0 }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: "linear-gradient(135deg, #06B6D4, #8B5CF6)", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 0 24px rgba(6,182,212,0.2)", flexShrink: 0 }}>
+                    <span style={{ fontSize: 22 }}>🎓</span>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: 12, color: "#94a3b8", letterSpacing: 2, textTransform: "uppercase", fontFamily: "'JetBrains Mono', monospace", lineHeight: 1 }}>
+                      Education
+                    </div>
+                    <div style={{ fontSize: 19, fontWeight: 700, color: "#f1f5f9", fontFamily: "'Syne', sans-serif" }}>
+                      Academic Timeline
+                    </div>
+                  </div>
+                </div>
+                <div style={{ position: "relative", display: "flex", gap: 0, flex: 1, minHeight: 0, justifyContent: "space-between", flexDirection: "column" }}>
+                  <div style={{ position: "absolute", left: 30, top: 0, bottom: 0, width: 2, background: "linear-gradient(180deg, rgba(6,182,212,0.35), rgba(139,92,246,0.12))", borderRadius: 2 }} />
+                  {EDUCATION.map((item, index) => (
+                    <div key={index} style={{ display: "flex", gap: 16, alignItems: "flex-start", flex: 1, paddingRight: 16 }}>
+                      <div style={{ position: "relative", top: 8, width: 28, flexShrink: 0, display: "flex", justifyContent: "center" }}>
+                        <span style={{ width: 18, height: 18, borderRadius: "50%", background: "#0f172a", border: "2.5px solid #06B6D4", boxShadow: "0 0 14px rgba(6,182,212,0.35)" }} />
+                      </div>
+                      <div style={{ color: "#e2e8f0", minWidth: 0, flex: 1, display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                        <div style={{ fontSize: 13, color: "#06B6D4", fontWeight: 700, letterSpacing: 1.3, textTransform: "uppercase", marginBottom: 8, fontFamily: "'JetBrains Mono', monospace" }}>
+                          {item.year}
+                        </div>
+                        <div style={{ fontSize: 16, fontWeight: 700, lineHeight: 1.4, marginBottom: 8, color: "#f8fafc" }}>
+                          {item.college}
+                        </div>
+                        <div style={{ fontSize: 13, lineHeight: 1.7, color: "#94a3b8" }}>
+                          {item.details}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -775,13 +807,13 @@ const handleSubmit = async (e) => {
               <p className="section-label">About Me</p>
               <h2 className="section-title">Turning Data Into Business Intelligence</h2>
               <p style={{ color: "#64748b", lineHeight: 1.9, marginBottom: 20, fontSize: 15 }}>
-                I'm a Data Analyst with 5+ years of experience helping organisations make smarter decisions through data. My background spans e-commerce, fintech, and retail — giving me a broad lens on how data drives growth.
+                I'm a Data Analyst with a year of experience helping organisations make smarter decisions through data. My background spans e-commerce, fintech, and retail — giving me a broad lens on how data drives growth.
               </p>
               <p style={{ color: "#64748b", lineHeight: 1.9, marginBottom: 32, fontSize: 15 }}>
                 I specialise in building end-to-end analytical pipelines: from wrangling messy data with Python and SQL, to delivering polished Power BI or Tableau dashboards that stakeholders actually use. I'm passionate about statistical rigour and communicating insight clearly.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 10 }}>
-                {["📍 Remote-Ready", "🎓 BSc Statistics", "🏆 Certified in Power BI", "🌐 Open to Freelance"].map((t) => (
+                {["📍 Remote-Ready", "🎓Statistics", "🏆 Certified in Power BI", "🌐 Open to Freelance"].map((t) => (
                   <span key={t} className="tag-badge">{t}</span>
                 ))}
               </div>
@@ -889,20 +921,36 @@ const handleSubmit = async (e) => {
               </p>
               {[
                 ["📧", "Email", "sameerkhan159049@gmail.com"],
-                ["💼", "LinkedIn", "linkedin.com/in/SAM KHAN"],
-                ["🐱", "GitHub", "github.com/SAMMY-777"],
-                ["📍", "Location", "Remote · Open to Global"],
-              ].map(([icon, label, val]) => (
-                <div key={label} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
-                  <div style={{ width: 44, height: 44, background: "#0d1526", border: "1px solid #1e293b", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
-                    {icon}
+                ["💼", "LinkedIn", "https://www.linkedin.com/in/sam-khan-807a0b339?utm_source=share_via&utm_content=profile&utm_medium=member_android"],
+                ["🐱", "GitHub", "https://github.com/SAMMY-777"],
+                ["📍", "Greater Noida", "Remote · Open to Global"],
+              ].map(([icon, label, val]) => {
+                const href =
+                  label === "LinkedIn" ? val :
+                  label === "GitHub" ? val :
+                  label === "Email" ? `mailto:${val}` :
+                  null;
+
+                return (
+                  <div key={label} style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 20 }}>
+                    <div style={{ width: 44, height: 44, background: "#0d1526", border: "1px solid #1e293b", borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18, flexShrink: 0 }}>
+                      {icon}
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 12, color: "#475569", fontFamily: "'JetBrains Mono', monospace" }}>{label}</div>
+                      <div style={{ color: "#94a3b8", fontSize: 14 }}>
+                        {href ? (
+                          <a href={href} target="_blank" rel="noreferrer" style={{ color: "#94a3b8", textDecoration: "underline" }}>
+                            {val}
+                          </a>
+                        ) : (
+                          val
+                        )}
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <div style={{ fontSize: 12, color: "#475569", fontFamily: "'JetBrains Mono', monospace" }}>{label}</div>
-                    <div style={{ color: "#94a3b8", fontSize: 14 }}>{val}</div>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
             {/* Form */}
             <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 16 }}>
